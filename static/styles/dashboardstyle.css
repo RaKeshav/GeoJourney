@@ -1,0 +1,99 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: "Helvetica";
+}
+
+.navbar{
+    background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.8)),url('navbar2.jpg');
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    margin: auto;
+    padding: 0px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo{
+    width: 180px;
+    cursor: pointer;
+}
+
+.navbar ul li{
+    list-style: none;
+    display: inline-block;
+    margin: 35px;
+    position: relative;
+}
+
+.navbar ul li a{
+    text-decoration: none;
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: large;
+    font-family: "Helvetica";
+    letter-spacing: 3px;
+}
+
+.navbar ul li::after{
+    content: '';
+    height: 3px;
+    width: 0%;
+    background: #ffffff;
+    position: absolute;
+    left: 0;
+    bottom: -10px;
+    transition: 0.5s;
+}
+.navbar ul li:hover::after{
+    width: 100%;
+}
+
+.content{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #343F4F;
+    text-align: center;
+    min-height: 15vh;
+}
+
+.masterdiv{
+    width: 100%;
+    height: 100%;
+    border: solid 2px #FFF;
+}
+
+.masterdiv div{
+    box-sizing: border-box;
+    float: left;
+    width: 25%;
+    height: 400px;
+    margin: 5;
+    padding: 5;
+}
+
+.masterdiv div{ border: 2px solid #FFF;}
+
+.extra_content{
+    background-image: linear-gradient(rgba(0,0,0,0.9),rgba(0,0,0,0.5)),url('background.jpg');
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    height: 75vh;
+}
+
+.extra_content .redirect{
+    display: flex;
+    font-size: 20px;
+    letter-spacing: 1px;
+    font-weight: bold;
+    font-family: "Helvetica";
+    align-items: center;
+    padding: 30px;
+    justify-content: center;
+    text-align: center;
+}

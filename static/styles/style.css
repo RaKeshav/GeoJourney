@@ -1,0 +1,131 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: "Helvetica";
+}
+
+.navbar {
+    background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.8)),url('navbar2.jpg');
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    margin: auto;
+    padding: 0px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo{
+    width: 180px;
+    cursor: pointer;
+}
+
+.navbar ul li{
+    list-style: none;
+    display: inline-block;
+    margin: 35px;
+    position: relative;
+}
+
+.navbar ul li a{
+    text-decoration: none;
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: large;
+    font-family: "Helvetica";
+    letter-spacing: 3px;
+}
+
+.navbar ul li::after{
+    content: '';
+    height: 3px;
+    width: 0%;
+    background: #ffffff;
+    position: absolute;
+    left: 0;
+    bottom: -10px;
+    transition: 0.5s;
+}
+
+.navbar ul li:hover::after{
+    width: 100%;
+}
+
+.content{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #343F4F;
+    text-align: center;
+    min-height: 15vh;
+}
+
+.content .static-text{
+    color: #fff;
+    font-size: 50px;
+    letter-spacing: 1px;
+    font-weight: bold;
+    font-family: "Helvetica";
+    text-transform: uppercase;
+}
+
+.content .dynamic-text{
+    margin-left: 16px;
+    height: 60px;
+    line-height: 60px;
+    overflow: hidden;
+}
+
+.dynamic-text li{
+    list-style: none;
+    color: #FC6D6D;
+    text-align: left;
+    font-size: 50px;
+    position: relative;
+    top: 0;
+    animation: slide 8s steps(8) infinite;
+}
+
+@keyframes slide {
+  100% {opacity: 1; top: -480px;}
+}
+
+.dynamic-text li span{
+    position: relative;
+    font-family: "Helvetica";
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+ }
+
+.dynamic-text li span::after{
+    content: "";
+    position: absolute;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: #343F4F;
+    border-left: 2px solid #FC6D6D;
+    animation: typing 1s steps(7) infinite;
+}
+
+@keyframes typing {
+  100%{
+    left: 100%;
+    margin: 0 -35px 0 35px;
+  }
+}
+
+.extra_content {
+    width: 100%;
+    height: 70vh;
+}
+
+.earth_video{
+    width: 100%;
+}
+
+
+

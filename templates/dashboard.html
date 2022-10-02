@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block title %}Dashboard{% endblock %}
+{% block stylesheet %}
+<link rel="stylesheet" href="{{ url_for('static', filename='styles/dashboardstyle.css')}}">
+{% endblock %}
+{% block content %}
+<div class="masterdiv">
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+</div>
+{% endblock %}
+{% block extra_content %}
+<a class="redirect" href="{{url_for('logout')}}">Press here to logout </a>
+{% endblock %}
+

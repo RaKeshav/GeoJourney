@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block title %}Register{% endblock %}
+{% block stylesheet %}
+<link rel="stylesheet" href="{{ url_for('static', filename='styles/loginstyle.css')}}">
+{% endblock %}
+{% block content %}
+<form class="forms" method="POST" action="">
+    {{ form.hidden_tag() }}
+    {{ form.username }}
+    {{ form.password }}
+    {{ form.submit }}
+</form>
+{% endblock %}
+{% block extra_content %}
+<a class="redirect" href="{{ url_for('login') }}">Already have an account? Log In</a>
+{% endblock %}
+

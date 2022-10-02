@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block title %}Home{% endblock %}
+{% block stylesheet %}
+<link rel="stylesheet" href="{{ url_for('static', filename='styles/style.css')}}">
+{% endblock %}
+{% block content %}
+<div class="static-text">Learn about</div>
+<ul class="dynamic-text">
+    <li><span>America</span></li>
+    <li><span>Russia</span></li>
+    <li><span>India</span></li>
+    <li><span>China</span></li>
+    <li><span>Mexico</span></li>
+    <li><span>Korea</span></li>
+    <li><span>Egypt</span></li>
+    <li><span>Brazil</span></li>
+</ul>
+{% endblock %}
+
+{% block extra_content %}
+<video class="earth_video" autoplay muted loop>
+    <source src="{{ url_for('static', filename='videos/Earth.mp4')}}" type="video/mp4">
+</video>
+{% endblock %}
