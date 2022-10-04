@@ -14,8 +14,14 @@
             <img src="{{ url_for('static', filename='videos/logo7.png')}}" class="logo">
         </a>
         <ul>
-            <li><a href="{{ url_for('login') }}">login</a></li>
-            <li><a href="{{ url_for('register') }}">register</a></li>
+            {% if current_user.is_authenticated %}
+                <li><a href="{{ url_for('populate') }}">dashboard</a></li>
+                <li><a href="{{ url_for('account') }}">account</a></li>
+                <li><a href="{{ url_for('logout') }}">logout</a></li>
+            {% else %}
+                <li><a href="{{ url_for('login') }}">login</a></li>
+                <li><a href="{{ url_for('register') }}">register</a></li>
+            {% endif %}
         </ul>
     </div>
     </div>
@@ -23,6 +29,8 @@
         {% block content %}
         {% endblock %}
     </div>
+    {% block data_entry %}
+    {% endblock %}
     <div class="extra_content">
         {% block extra_content %}
         {% endblock %}

@@ -5,25 +5,15 @@
 {% endblock %}
 {% block content %}
 <div class="masterdiv">
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
+    {% for i in countries %}
+    <div>
+        <p class="country-text"><a class="info-link" href="{{ url_for('information', i=i) }}">{{i}}</a></p>
+    </div>
+    {% endfor %}
 </div>
 {% endblock %}
 {% block extra_content %}
 <a class="redirect" href="{{url_for('logout')}}">Press here to logout </a>
 {% endblock %}
+
 

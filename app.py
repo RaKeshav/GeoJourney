@@ -8,14 +8,13 @@ from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, SubmitField
 from wtforms.validators import InputRequired, Length, ValidationError
 from flask_bcrypt import Bcrypt
-
+from countryinfo import *
 
 app = Flask(__name__)
 db = SQLAlchemy(app)
 bcrypt = Bcrypt(app)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
 app.config['SECRET_KEY'] = 'thisisasecretkey'
-
 
 login_manager = LoginManager()
 login_manager.init_app(app)
@@ -35,10 +34,10 @@ class User(db.Model, UserMixin):
 
 class RegisterForm(FlaskForm):
     username = StringField(validators=[
-                           InputRequired(), Length(min=4, max=20)], render_kw={"placeholder": "Username"})
+        InputRequired(), Length(min=4, max=20)], render_kw={"placeholder": "Username"})
 
     password = PasswordField(validators=[
-                             InputRequired(), Length(min=8, max=20)], render_kw={"placeholder": "Password"})
+        InputRequired(), Length(min=8, max=20)], render_kw={"placeholder": "Password"})
 
     submit = SubmitField('Register')
 
@@ -52,12 +51,28 @@ class RegisterForm(FlaskForm):
 
 class LoginForm(FlaskForm):
     username = StringField(validators=[
-                           InputRequired(), Length(min=4, max=20)], render_kw={"placeholder": "Username"})
+        InputRequired(), Length(min=4, max=20)], render_kw={"placeholder": "Username"})
 
     password = PasswordField(validators=[
-                             InputRequired(), Length(min=8, max=20)], render_kw={"placeholder": "Password"})
+        InputRequired(), Length(min=8, max=20)], render_kw={"placeholder": "Password"})
 
     submit = SubmitField('Login')
+
+@app.route('/account')
+def account():
+    return render_template('account.html')
+
+@app.route('/delete')
+def delete():
+    userid = current_user.get_id()
+    user_to_delete = User.query.get_or_404(userid)
+    try:
+        db.session.delete(user_to_delete)
+        db.session.commit()
+        print('successful')
+        return redirect(url_for('login'))
+    except:
+        pass
 
 
 @app.route('/')
@@ -73,7 +88,7 @@ def login():
         if user:
             if bcrypt.check_password_hash(user.password, form.password.data):
                 login_user(user)
-                return redirect(url_for('dashboard'))
+                return redirect(url_for('populate'))
     return render_template('login.html', form=form)
 
 
@@ -90,7 +105,22 @@ def logout():
     return redirect(url_for('home'))
 
 
-@ app.route('/register', methods=['GET', 'POST'])
+@app.route('/<string:i>/information')
+def information(i):
+    data = CountryInfo(i)
+    provinces = (((((str(data.provinces())).replace("'", '')).replace(",", ", ")).replace("[", "")).replace("]", "")).replace('"', "")
+    return render_template('information.html', country=i, countryData=data, provinces=provinces)
+
+
+@app.route('/populate', methods=['GET', 'POST'])
+def populate():
+    file = open('updatedcountry.txt', 'r')
+    country_list = file.read().splitlines()
+    file.close()
+    return render_template('dashboard.html', countries=country_list)
+
+
+@app.route('/register', methods=['GET', 'POST'])
 def register():
     form = RegisterForm()
 

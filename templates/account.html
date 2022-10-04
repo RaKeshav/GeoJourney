@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block title %}Home{% endblock %}
+{% block stylesheet %} <link rel="stylesheet" href="{{ url_for('static', filename='styles/infostyle.css')}}">
+{% endblock %}
+{% block content %}
+<td>
+    <a href="{{ url_for('delete', id=our_user_id)}}">Delete Account</a>
+</td>
+{% endblock %}

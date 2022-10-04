@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block title %}Information{% endblock %}
+{% block stylesheet %}
+<link rel="stylesheet" href="{{ url_for('static', filename='styles/infostyle.css')}}">
+{% endblock %}
+{% block content %}
+<h1>{{country}}</h1>
+{% endblock %}
+{% block data_entry %}
+<div class="info_style">
+    <p>Population: {{countryData.population()}}</p>
+    <p>Land Area: {{countryData.area()}} km2</p>
+    <p>Region: {{countryData.region()}}</p>
+    <p>Sub-region: {{countryData.subregion()}}</p>
+    <p>Capital City: {{countryData.capital()}}</p>
+    <p>Provinces: {{provinces}}</p>
+    <p>Currency: {{countryData.currencies()}}</p>
+    <p>Languages: {{countryData.languages()}}</p>
+    <p>Timezone: {{countryData.timezones()}}</p>
+</div>
+{% endblock %}
+{% block extra_content %}
+{% endblock %}
